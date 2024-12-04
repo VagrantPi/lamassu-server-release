@@ -1,0 +1,143 @@
+import typographyStyles from 'src/components/typography/styles'
+import baseStyles from 'src/pages/Logs.styles'
+import {
+  offColor,
+  white,
+  primaryColor,
+  zircon,
+  smallestFontSize,
+  inputFontFamily,
+  inputFontWeight,
+  spacer
+} from 'src/styling/variables'
+
+const { label1, mono, p } = typographyStyles
+const { titleWrapper, titleAndButtonsContainer, buttonsWrapper } = baseStyles
+
+const cpcStyles = {
+  wrapper: {
+    extend: mono,
+    display: 'flex',
+    alignItems: 'center'
+  },
+  address: {
+    lineBreak: 'anywhere'
+  },
+  buttonWrapper: {
+    '& button': {
+      border: 'none',
+      backgroundColor: 'transparent',
+      cursor: 'pointer'
+    }
+  },
+  popoverContent: {
+    extend: label1,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: white,
+    borderRadius: 4,
+    padding: [[5, 9]]
+  }
+}
+
+const detailsRowStyles = {
+  idCardDataCard: {
+    extend: p,
+    display: 'flex',
+    padding: [[11, 8]],
+    '& > div': {
+      display: 'flex',
+      flexDirection: 'column',
+      '& > div': {
+        width: 144,
+        height: 37,
+        marginBottom: 15,
+        '&:last-child': {
+          marginBottom: 0
+        }
+      }
+    }
+  }
+}
+
+const labelStyles = {
+  label: {
+    extend: label1,
+    color: offColor,
+    marginBottom: 4
+  }
+}
+
+const mainStyles = {
+  titleWrapper,
+  titleAndButtonsContainer,
+  buttonsWrapper,
+  headerLabels: {
+    display: 'flex',
+    flexDirection: 'row',
+    '& div': {
+      display: 'flex',
+      alignItems: 'center'
+    },
+    '& > div': {
+      marginLeft: 24
+    },
+    '& > div:first-child': {
+      marginLeft: 0
+    },
+    '& span': {
+      extend: label1,
+      marginLeft: 6
+    }
+  },
+  overflowTd: {
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis'
+  },
+  flexWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginRight: 16
+  },
+  customerLinkIcon: {
+    marginLeft: 2
+  },
+  flexRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  machineRedirectContainer: {
+    marginLeft: 10,
+    paddingLeft: 5,
+    paddingRight: 5
+  }
+}
+
+const chipStyles = {
+  root: {
+    borderRadius: spacer / 2,
+    marginTop: spacer / 2,
+    marginRight: spacer / 4,
+    marginBottom: spacer / 2,
+    marginLeft: spacer / 4,
+    height: spacer * 3,
+    backgroundColor: zircon,
+    '&:hover, &:focus, &:active': {
+      backgroundColor: zircon
+    }
+  },
+  label: {
+    fontSize: smallestFontSize,
+    fontWeight: inputFontWeight,
+    fontFamily: inputFontFamily,
+    paddingRight: spacer / 2,
+    paddingLeft: spacer / 2,
+    color: primaryColor
+  }
+}
+
+export { cpcStyles, detailsRowStyles, labelStyles, mainStyles, chipStyles }

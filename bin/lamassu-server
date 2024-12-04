@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+const app = require('../lib/app')
+
+process.on('unhandledRejection', err => {
+  console.log('Unhandled rejection')
+  console.dir(err)
+  console.log(err.stack)
+})
+
+app.run()
+  .catch(console.log)

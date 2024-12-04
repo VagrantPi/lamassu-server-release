@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+require('../lib/environment-helper')
+
+const MNEMONIC_PATH = process.env.MNEMONIC_PATH
+
+const mnemonic = fs.readFileSync(MNEMONIC_PATH, 'utf8').trim()
+console.log(mnemonic)

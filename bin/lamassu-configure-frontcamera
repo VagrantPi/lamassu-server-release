@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+'use strict'
+
+require('../lib/environment-helper')
+
+const setEnvVariable = require('../tools/set-env-var')
+
+if (!process.env.FRONT_CAMERA_DIR) {
+  setEnvVariable('FRONT_CAMERA_DIR', '/opt/lamassu-server/frontcamera')
+}

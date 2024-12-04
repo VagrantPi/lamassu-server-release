@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+'use strict'
+
+const fs = require('fs')
+const path = require('path')
+const os = require('os')
+
+require('../lib/environment-helper')
+const mnemonicHelpers = require('../lib/mnemonic-helpers')
+const setEnvVariable = require('../tools/set-env-var')
+
+if (!process.env.MNEMONIC_PATH && process.env.SEED_PATH) {
+  const seed = fs.readFileSync(process.env.SEED_PATH, 'utf8').trim()
+  const mnemonic = mnemonicHelpers.fromSeed(seed)
+
+  if (process.argv[2] === '--prod') {
+    setEnvVariable('MNEMONIC_PATH', path.resolve('/etc', 'lamassu', 'mnemonics', 'mnemonic.txt'))
+  } else {
+    setEnvVariable('MNEMONIC_PATH', path.resolve(os.homedir(), '.lamassu', 'mnemonics', 'mnemonic.txt'))
+  }
+
+  if (!fs.existsSync(path.dirname(process.env.MNEMONIC_PATH))) {
+    fs.mkdirSync(path.dirname(process.env.MNEMONIC_PATH))
+  }
+
+  if (!fs.existsSync(process.env.MNEMONIC_PATH)) {
+    fs.writeFileSync(process.env.MNEMONIC_PATH, mnemonic, 'utf8')
+  }
+}

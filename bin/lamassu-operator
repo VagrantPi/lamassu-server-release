@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const hkdf = require('futoin-hkdf')
+
+require('../lib/environment-helper')
+const mnemonicHelpers = require('../lib/mnemonic-helpers')
+
+const MNEMONIC_PATH = process.env.MNEMONIC_PATH
+
+const mnemonic = fs.readFileSync(MNEMONIC_PATH, 'utf8').trim()
+const masterSeed = mnemonicHelpers.toEntropyBuffer(mnemonic)
+
+console.log(hkdf(masterSeed, 16, { salt: 'lamassu-server-salt', info: 'operator-id' }).toString('hex'))

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo
+echo "Here is the 'External ID' of your paired machine(s), for use under the 'ATM / Teller details' of your CoinATMRadar listing:"
+echo
+su - postgres -c "psql \"lamassu\" -Atc \"select regexp_replace(device_id, '$', ' '),regexp_replace(name, '^', ' ') from devices\""
+echo
+echo "If speaking with CoinATMRadar directly, it may be helpful to let them know your 'Operator ID':"
+echo
+$(npm root -g)/lamassu-server/bin/lamassu-operator
+echo

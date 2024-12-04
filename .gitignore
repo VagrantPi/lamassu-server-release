@@ -1,0 +1,10 @@
+node_modules
+
+.idea/
+.settings/
+
+certs/
+tests/stress/machines
+tests/stress/config.json
+
+.env

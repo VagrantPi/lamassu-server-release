@@ -1,0 +1,1011 @@
+{
+  "groups": [
+    {
+      "code": "definition",
+      "display": "Definition",
+      "cryptoScope": "global",
+      "machineScope": "specific",
+      "fields": [
+        "machineName",
+        "machineModel",
+        "machineLocation"
+      ]
+    },
+    {
+      "code": "setup",
+      "display": "Setup",
+      "cryptoScope": "global",
+      "machineScope": "both",
+      "fields": [
+        "fiatCurrency",
+        "country",
+        "machineLanguages",
+        "cryptoCurrencies"
+      ]
+    },
+    {
+      "code": "cashOut",
+      "display": "Cash Out",
+      "cryptoScope": "global",
+      "machineScope": "both",
+      "fields": [
+        "cashOutEnabled",
+        "topCashOutDenomination",
+        "bottomCashOutDenomination",
+        "virtualCashOutDenomination",
+        "zeroConfLimit"
+      ]
+    },
+    {
+      "code": "commissions",
+      "display": "Commissions",
+      "cryptoScope": "both",
+      "machineScope": "both",
+      "fields": [
+        "cashInCommission",
+        "cashOutCommission",
+        "cashInFee",
+        "minimumTx"
+      ]
+    },
+    {
+      "code": "balanceAlerts",
+      "display": "Balance Alerts",
+      "cryptoScope": "both",
+      "machineScope": "both",
+      "fields": [
+        "cryptoAlertThreshold",
+        "cashInAlertThreshold",
+        "cashOutCassette1AlertThreshold",
+        "cashOutCassette2AlertThreshold"
+      ]
+    },
+    {
+      "code": "compliance",
+      "display": "Compliance",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fields": [
+         "smsVerificationActive",
+         "smsVerificationThreshold",
+         "idCardDataVerificationActive",
+         "idCardDataVerificationThreshold",
+         "idCardPhotoVerificationActive",
+         "idCardPhotoVerificationThreshold",
+         "sanctionsVerificationActive",
+         "sanctionsVerificationThreshold",
+         "frontCameraVerificationActive",
+         "frontCameraVerificationThreshold",
+         "hardLimitVerificationActive",
+         "hardLimitVerificationThreshold",
+         "receiptPrintingActive",
+         "rejectAddressReuseActive"
+      ]
+    },
+    {
+      "code": "coinAtmRadar",
+      "display": "Coin ATM Radar",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fields": [
+         "coinAtmRadarActive",
+         "coinAtmRadarShowRates"
+      ]
+    },
+    {
+      "code": "walletSettings",
+      "display": "Wallet Settings",
+      "cryptoScope": "specific",
+      "machineScope": "global",
+      "fields": [
+        "ticker",
+        "wallet",
+        "layer2",
+        "exchange",
+        "zeroConf"
+      ]
+    },
+    {
+      "code": "notifications",
+      "display": "Notifications",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fields": [
+        "notificationsEnabled",
+        "notificationsEmailEnabled",
+        "notificationsSMSEnabled",
+        "transactionNotificationsEnabled",
+        "transactionNotificationsEmailEnabled",
+        "transactionNotificationsSMSEnabled",
+        "sms",
+        "email"
+      ]
+    },
+    {
+      "code": "terms",
+      "display": "Terms and Conditions",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fields": [
+        "termsScreenActive",
+        "termsScreenTitle",
+        "termsScreenText",
+        "termsAcceptButtonText",
+        "termsCancelButtonText"
+      ]
+    },
+    {
+      "code": "operatorInfo",
+      "display": "Operator Info",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fields": [
+        "operatorInfoActive",
+        "operatorInfoEmail",
+        "operatorInfoName",
+        "operatorInfoPhone",
+        "operatorInfoWebsite",
+        "operatorInfoCompanyNumber"
+      ]
+    },
+    {
+      "code": "fudgeFactor",
+      "display": "Fudge Factor",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fields": [
+        "fudgeFactorActive"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "code": "receiptPrintingActive",
+      "displayTop": "Receipt Printing",
+      "displayBottom": "Receipt Priting",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "rejectAddressReuseActive",
+      "displayTop": "Reject Address Reuse",
+      "displayBottom": "Reject Address Reuse",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "hardLimitVerificationActive",
+      "displayTop": "Hard Limit",
+      "displayBottom": "Hard Limit",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "hardLimitVerificationThreshold",
+      "displayBottom": "Daily Value Threshold",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "enabledIfAny": [
+        "hardLimitVerificationActive"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "sanctionsVerificationActive",
+      "displayTop": "Sanctions Verification",
+      "displayBottom": "Sanctions",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "sanctionsVerificationThreshold",
+      "displayBottom": "Daily Value Threshold",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "enabledIfAny": [
+        "sanctionsVerificationActive"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "frontCameraVerificationActive",
+      "displayTop": "Front Facing Camer",
+      "displayBottom": "Front Facing Camera",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "frontCameraVerificationThreshold",
+      "displayBottom": "Daily Value Threshold",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "enabledIfAny": [
+        "frontCameraVerificationActive"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "idCardPhotoVerificationActive",
+      "displayTop": "ID Card Photo",
+      "displayBottom": "ID Photo",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "idCardPhotoVerificationThreshold",
+      "displayBottom": "Daily Value Threshold",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "enabledIfAny": [
+        "idCardPhotoVerificationActive"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "idCardDataVerificationActive",
+      "displayTop": "ID Card Verification",
+      "displayBottom": "Card",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "idCardDataVerificationThreshold",
+      "displayBottom": "Daily Value Threshold",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "enabledIfAny": [
+        "idCardDataVerificationActive"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "smsVerificationActive",
+      "displayTop": "SMS Verification",
+      "displayBottom": "SMS",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "smsVerificationThreshold",
+      "displayBottom": "Daily Value Threshold",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "enabledIfAny": [
+        "smsVerificationActive"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "cashInCommission",
+      "displayTop": "Commissions",
+      "displayTopCount": 2,
+      "displayBottom": "Cash-in",
+      "fieldType": "percentage",
+      "fieldClass": null,
+      "cryptoScope": "both",
+      "machineScope": "both",
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "cashOutCommission",
+      "displayBottom": "Cash-out",
+      "displayTopCount": 0,
+      "fieldType": "percentage",
+      "fieldClass": null,
+      "cryptoScope": "both",
+      "machineScope": "both",
+      "enabledIfAny": [
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "cashInFee",
+      "displayTop": "Cash-in",
+      "displayBottom": "Fixed Fee",
+      "displayTopCount": 2,
+      "fieldType": "decimal",
+      "fieldClass": "fiat",
+      "cryptoScope": "both",
+      "machineScope": "both",
+      "default": 0,
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "minimumTx",
+      "displayBottom": "Minimum Tx",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "cryptoScope": "both",
+      "machineScope": "both",
+      "default": 0,
+      "enabledIfAny": [
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "cryptoAlertThreshold",
+      "displayTop": "Crypto",
+      "displayBottom": "Threshold",
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "cryptoScope": "both",
+      "machineScope": "global",
+      "enabledIfAny": [
+        "notificationsEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "cashInAlertThreshold",
+      "displayTop": "Cash-in",
+      "displayBottom": "Threshold",
+      "fieldType": "integer",
+      "fieldClass": "banknotes",
+      "cryptoScope": "global",
+      "machineScope": "both",
+      "enabledIfAny": [
+        "notificationsEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "cashOutCassette1AlertThreshold",
+      "displayTop": "Cash-out Thresholds",
+      "displayTopCount": 2,
+      "displayBottom": "Top",
+      "fieldType": "integer",
+      "fieldClass": "banknotes",
+      "cryptoScope": "global",
+      "machineScope": "both",
+      "default": 10,
+      "enabledIfAll": [
+        "notificationsEnabled",
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "cashOutCassette2AlertThreshold",
+      "displayTopCount": 0,
+      "displayBottom": "Bottom",
+      "fieldType": "integer",
+      "fieldClass": "banknotes",
+      "cryptoScope": "global",
+      "machineScope": "both",
+      "default": 10,
+      "enabledIfAll": [
+        "notificationsEnabled",
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        },
+        {
+          "code": "min",
+          "min": 0
+        }
+      ]
+    },
+    {
+      "code": "zeroConfLimit",
+      "displayTop": "0-conf",
+      "displayBottom": "Limit",
+      "fieldType": "integer",
+      "fieldClass": "fiat",
+      "cryptoScope": "global",
+      "machineScope": "both",
+      "enabledIfAny": [
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "ticker",
+      "displayBottom": "Ticker",
+      "fieldType": "account",
+      "fieldClass": "ticker",
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ]
+    },
+    {
+      "code": "wallet",
+      "displayBottom": "Wallet",
+      "fieldType": "account",
+      "fieldClass": "wallet",
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ]
+    },
+    {
+      "code": "layer2",
+      "displayBottom": "Layer 2",
+      "fieldType": "account",
+      "fieldClass": "layer2",
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": "no-layer2"
+    },
+    {
+      "code": "exchange",
+      "displayBottom": "Exchange",
+      "fieldType": "account",
+      "fieldClass": "exchange",
+      "fieldValidation": [],
+      "default": "no-exchange"
+    },
+    {
+      "code": "zeroConf",
+      "displayBottom": "Zero Conf",
+      "fieldType": "account",
+      "fieldClass": "zeroConf",
+      "fieldValidation": [],
+      "default": "all-zero-conf"
+    },
+    {
+      "code": "fiatCurrency",
+      "displayBottom": "Fiat Currency",
+      "fieldType": "fiatCurrency",
+      "cryptoScope": "global",
+      "machineScope": "global",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ]
+    },
+    {
+      "code": "country",
+      "displayBottom": "Country",
+      "fieldType": "country",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ]
+    },
+    {
+      "code": "machineLanguages",
+      "displayBottom": "Languages",
+      "fieldType": "language",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": ["en-US"]
+    },
+    {
+      "code": "cryptoCurrencies",
+      "displayBottom": "Crypto Currencies",
+      "fieldType": "cryptoCurrency",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": ["BTC"]
+    },
+    {
+      "code": "topCashOutDenomination",
+      "displayTop": "Cash-out denominations",
+      "displayBottom": "Top",
+      "displayTopCount": 3,
+      "fieldType": "integer",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "bottomCashOutDenomination",
+      "displayBottom": "Bottom",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "virtualCashOutDenomination",
+      "displayBottom": "Virtual",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "emptyBillMargin",
+      "displayTop": "Empty bill",
+      "displayBottom": "Margin",
+      "fieldType": "integer",
+      "fieldClass": "banknotes",
+      "enabledIfAny": [
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}],
+      "default": 0
+    },
+    {
+      "code": "smsVerificationEnabled",
+      "displayTop": "Verifications enabled",
+      "displayBottom": "SMS",
+      "displayTopCount": 2,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "idVerificationEnabled",
+      "displayBottom": "ID",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "idVerifier",
+      "displayTop": "ID verification",
+      "displayTopCount": 2,
+      "displayBottom": "Service",
+      "fieldType": "account",
+      "fieldClass": "idVerifier",
+      "enabledIfAny": [
+        "idVerificationEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "idVerificationLimit",
+      "displayBottom": "Limit",
+      "displayTopCount": 0,
+      "fieldType": "integer",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "idVerificationEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "cashOutEnabled",
+      "displayBottom": "Cash Out",
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "machineName",
+      "cryptoScope": "global",
+      "machineScope": "specific",
+      "displayBottom": "Name",
+      "fieldType": "string",
+      "fieldClass": null,
+      "fieldValidation": [{"code": "required"}]
+    },
+    {
+      "code": "machineModel",
+      "cryptoScope": "global",
+      "machineScope": "specific",
+      "displayBottom": "Model",
+      "fieldType": "string",
+      "fieldClass": null,
+      "readOnly": true,
+      "fieldValidation": []
+    },
+    {
+      "code": "machineLocation",
+      "displayBottom": "Location",
+      "fieldType": "string",
+      "fieldClass": null,
+      "fieldValidation": []
+    },
+    {
+      "code": "notificationsEnabled",
+      "displayTop": "Notifications enabled",
+      "displayBottom": "General",
+      "displayTopCount": 3,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "notificationsEmailEnabled",
+      "displayBottom": "Email",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "notificationsEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "notificationsSMSEnabled",
+      "displayBottom": "SMS",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "notificationsEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "transactionNotificationsEnabled",
+      "displayTop": "Transaction Notifications enabled",
+      "displayBottom": "General",
+      "displayTopCount": 3,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "transactionNotificationsEmailEnabled",
+      "displayBottom": "Email",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "transactionNotificationsEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "transactionNotificationsSMSEnabled",
+      "displayBottom": "SMS",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "transactionNotificationsEnabled"
+      ],
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "sms",
+      "displayTop": "Gateways",
+      "displayBottom": "SMS",
+      "displayTopCount": 2,
+      "fieldType": "account",
+      "fieldClass": "sms",
+      "enabledIfAny": [
+        "notificationsSMSEnabled",
+        "cashOutEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}],
+      "default": "twilio"
+    },
+    {
+      "code": "email",
+      "displayBottom": "Email",
+      "displayTopCount": 0,
+      "fieldType": "account",
+      "fieldClass": "email",
+      "enabledIfAny": [
+        "notificationsEmailEnabled"
+      ],
+      "fieldValidation": [{"code": "required"}],
+      "default": "mailgun"
+    },
+    {
+      "code": "coinAtmRadarActive",
+      "displayBottom": "Active",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [{"code": "required"}],
+      "default": false
+    },
+    {
+      "code": "coinAtmRadarShowRates",
+      "displayBottom": "Show Rates",
+      "displayTopCount": 0,
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "coinAtmRadarActive"
+      ],
+      "fieldValidation": [{"code": "required"}],
+      "default": true
+    },
+    {
+      "code": "termsScreenActive",
+      "displayBottom": "Terms and Conditions Screen enabled",
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [
+        {
+          "code": "required"
+        }
+      ],
+      "default": false
+    },
+    {
+      "code": "termsScreenTitle",
+      "displayBottom": "Title",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "default": "Terms and Conditions",
+      "enabledIfAny": [
+        "termsScreenActive"
+      ],
+      "fieldValidation": []
+    },
+    {
+      "code": "termsScreenText",
+      "displayBottom": "Text",
+      "displayTopCount": 0,
+      "fieldType": "markdown",
+      "fieldClass": null,
+      "enabledIfAny": [
+        "termsScreenActive"
+      ],
+      "fieldValidation": []
+    },
+    {
+      "code": "termsAcceptButtonText",
+      "displayBottom": "Accept button text",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "default": "Accept",
+      "enabledIfAny": [
+        "termsScreenActive"
+      ],
+      "fieldValidation": []
+    },
+    {
+      "code": "termsCancelButtonText",
+      "displayBottom": "Cancel button text",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "default": "Cancel",
+      "enabledIfAny": [
+        "termsScreenActive"
+      ],
+      "fieldValidation": []
+    },
+    {
+      "code": "fudgeFactorActive",
+      "displayBottom": "Enabled",
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [],
+      "default": false
+    },
+    {
+      "code": "operatorInfoActive",
+      "displayBottom": "Info card enabled",
+      "fieldType": "onOff",
+      "fieldClass": null,
+      "fieldValidation": [],
+      "default": false
+    },
+    {
+      "code": "operatorInfoName",
+      "displayBottom": "Name",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "default": "",
+      "fieldValidation": []
+    },
+    {
+      "code": "operatorInfoEmail",
+      "displayBottom": "Email",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": "email",
+      "fieldValidation": []
+    },
+    {
+      "code": "operatorInfoPhone",
+      "displayBottom": "Phone",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "fieldValidation": []
+    },
+    {
+      "code": "operatorInfoWebsite",
+      "displayBottom": "Website",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "fieldValidation": []
+    },
+    {
+      "code": "operatorInfoCompanyNumber",
+      "displayBottom": "Company Number",
+      "displayTopCount": 0,
+      "fieldType": "string",
+      "fieldClass": null,
+      "fieldValidation": []
+    }
+  ]
+}

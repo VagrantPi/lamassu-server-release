@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+'use strict'
+
+require('../lib/environment-helper')
+const setEnvVariable = require('../tools/set-env-var')
+
+if (!process.env.OFAC_SOURCES_NAMES && !process.env.OFAC_SOURCES_URLS) {
+  setEnvVariable('OFAC_SOURCES_NAMES', 'sdn_advanced,cons_advanced')
+  setEnvVariable('OFAC_SOURCES_URLS', 'https://www.treasury.gov/ofac/downloads/sanctions/1.0/sdn_advanced.xml,https://www.treasury.gov/ofac/downloads/sanctions/1.0/cons_advanced.xml')
+}

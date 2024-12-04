@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+require('../lib/environment-helper')
+const { asyncLocalStorage, defaultStore } = require('../lib/async-storage')
+const userManagement = require('../lib/new-admin/graphql/modules/userManagement')
+const authErrors = require('../lib/new-admin/graphql/errors/authentication')
+
+const name = process.argv[2]
+const role = process.argv[3]
+const domain = process.env.HOSTNAME
+
+if (!domain) {
+  console.error('No hostname configured in the environment')
+  process.exit(1)
+}
+
+if (!name || !role) {
+  console.log('Usage: lamassu-register <email> <role>')
+  console.log('<role> must be \'user\' or \'superuser\'')
+  process.exit(2)
+}
+
+const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+if (!emailRegex.test(name)) {
+  console.log('Usage: <email> must be in an email format')
+  process.exit(2)
+}
+
+if (role !== 'user' && role !== 'superuser') {
+  console.log('Usage: <role> must be \'user\' or \'superuser\'')
+  process.exit(2)
+}
+
+asyncLocalStorage.run(defaultStore(), () => {
+  userManagement.createRegisterToken(name, role).then(token => {
+    if (domain === 'localhost' && process.env.NODE_ENV !== 'production') {
+      console.log(`https://${domain}:3001/register?t=${token.token}`)
+    } else {
+      console.log(`https://${domain}/register?t=${token.token}`)
+    }
+
+    process.exit(0)
+  }).catch(err => {
+
+    if (err instanceof authErrors.UserAlreadyExistsError){
+      console.log(`A user with email ${name} already exists!`)
+      process.exit(2)
+    }
+    
+    console.log('Error: %s', err)
+    process.exit(3)
+  })
+})
