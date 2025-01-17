@@ -119,6 +119,8 @@ const getAuthorizedStatus = (it, triggers, customRequests) => {
     return false
   }, fields)
 
+  console.log('it.authorizedOverride', it.authorizedOverride);
+  
   if (it.authorizedOverride === CUSTOMER_BLOCKED)
     return { label: 'Blocked', type: 'error' }
   if (it.isSuspended)
