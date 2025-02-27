@@ -167,6 +167,8 @@ const EditableCard = ({
       : state === OVERRIDE_REJECTED
       ? { label: 'Rejected', type: 'error' }
       : { label: 'Accepted', type: 'success' }
+  console.log('authorized', authorized);
+  
 
   return (
     <div>

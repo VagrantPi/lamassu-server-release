@@ -45,6 +45,8 @@ function filterCustomer () {
 }
 
 function getCustomerById (id) {
+  console.log('getCustomerById!!');
+  
   const passableErrorCodes = _.map(Pgp.as.text, TX_PASSTHROUGH_ERROR_CODES).join(',')
 
   const sql = `EXPLAIN ANALYZE

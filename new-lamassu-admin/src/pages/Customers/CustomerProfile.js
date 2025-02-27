@@ -484,6 +484,8 @@ const CustomerProfile = memo(() => {
   const blocked =
     R.path(['authorizedOverride'])(customerData) === OVERRIDE_REJECTED
 
+  console.log('blocked', blocked);
+    
   const isSuspended = customerData.isSuspended
   const isCustomerData = clickedItem === 'customerData'
   const isOverview = clickedItem === 'overview'

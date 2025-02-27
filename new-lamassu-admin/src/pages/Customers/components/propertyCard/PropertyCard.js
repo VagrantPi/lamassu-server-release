@@ -96,6 +96,8 @@ const PropertyCard = memo(
         ? { label: 'Rejected', type: 'error' }
         : { label: 'Accepted', type: 'success' }
 
+        console.log('authorized2', authorized);
+        
     return (
       <Paper
         className={classnames(classes.propertyCard, className)}
