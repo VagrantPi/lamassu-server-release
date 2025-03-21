@@ -18,7 +18,7 @@ class EcpayInvoiceClient {
     const postData = encodeURIComponent(JSON.stringify(params));
     const key = this.hashKey ? this.hashKey.padEnd(16, "0").slice(0, 16) : '';
     const iv = this.hashIV ? this.hashIV.padEnd(16, "0").slice(0, 16) : '';
-    const cipher = crypto.createCipheriv("aes128", key, iv);
+    const cipher = crypto.createCipheriv('aes-128-cbc', key, iv);
     let encrypted = cipher.update(postData, "utf8", "base64");
     encrypted += cipher.final("base64");
     return encrypted;
@@ -28,7 +28,7 @@ class EcpayInvoiceClient {
     const key = this.hashKey ? this.hashKey.padEnd(16, "0").slice(0, 16) : '';
     const iv = this.hashIV ? this.hashIV.padEnd(16, "0").slice(0, 16) : '';
     const decipher = crypto.createDecipheriv(
-      "aes128",
+      "aes-128-cbc",
       key,
       iv
     );
