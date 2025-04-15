@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 
+const logger = require('../lib/logger')
+
 /**
  * 郵件發送器類別
  */
@@ -26,10 +28,10 @@ class EmailSender {
   async verifyConnection() {
     try {
       await this.transporter.verify();
-      console.log('SMTP 連接驗證成功');
+      logger.log('SMTP 連接驗證成功');
       return true;
     } catch (error) {
-      console.error('SMTP 連接驗證失敗:', error);
+      logger.error('SMTP 連接驗證失敗:', error);
       return false;
     }
   }
@@ -55,14 +57,14 @@ class EmailSender {
       // 發送郵件
       const info = await this.transporter.sendMail(options);
       
-      console.log('郵件發送成功:', info.messageId);
+      logger.debug('郵件發送成功:', info.messageId);
       return {
         success: true,
         messageId: info.messageId,
         info: info
       };
     } catch (error) {
-      console.error('郵件發送失敗:', error);
+      logger.error('郵件發送失敗:', error);
       return {
         success: false,
         error: error.message
