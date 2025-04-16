@@ -57,7 +57,7 @@ class EmailSender {
       // 發送郵件
       const info = await this.transporter.sendMail(options);
       
-      logger.debug('郵件發送成功:', info.messageId);
+      logger.info('郵件發送成功:', info.messageId);
       return {
         success: true,
         messageId: info.messageId,
