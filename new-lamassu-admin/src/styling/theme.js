@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 
 import typographyStyles from 'src/components/typography/styles'
 
@@ -18,7 +18,7 @@ import {
 
 const { p } = typographyStyles
 
-export default createMuiTheme({
+export default createTheme({
   typography: {
     fontFamily: inputFontFamily,
     body1: { ...p }

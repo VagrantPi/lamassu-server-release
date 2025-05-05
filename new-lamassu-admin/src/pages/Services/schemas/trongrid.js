@@ -1,6 +1,5 @@
-import * as Yup from 'yup'
-
 import TextInputFormik from 'src/components/inputs/formik/TextInput'
+import * as Yup from 'yup'
 
 export default {
   code: 'trongrid',

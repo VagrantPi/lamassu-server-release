@@ -1,7 +1,7 @@
 import * as R from 'ramda'
+import Autocomplete from 'src/components/inputs/formik/Autocomplete'
 import * as Yup from 'yup'
 
-import Autocomplete from 'src/components/inputs/formik/Autocomplete.js'
 import { labels as timezoneList } from 'src/utils/timezone-list'
 
 const getFields = (getData, names, onChange, auxElements = []) => {
@@ -153,42 +153,18 @@ const overrides = (auxData, auxElements, configureCoin) => {
 }
 
 const LocaleSchema = Yup.object().shape({
-  country: Yup.string()
-    .label('Country')
-    .required(),
-  fiatCurrency: Yup.string()
-    .label('Fiat Currency')
-    .required(),
-  languages: Yup.array()
-    .label('Languages')
-    .required()
-    .min(1)
-    .max(4),
-  cryptoCurrencies: Yup.array()
-    .label('Crypto Currencies')
-    .required()
-    .min(1),
-  timezone: Yup.string()
-    .label('Timezone')
-    .required()
+  country: Yup.string().label('Country').required(),
+  fiatCurrency: Yup.string().label('Fiat currency').required(),
+  languages: Yup.array().label('Languages').required().min(1).max(4),
+  cryptoCurrencies: Yup.array().label('Crypto currencies').required().min(1),
+  timezone: Yup.string().label('Timezone').required()
 })
 
 const OverridesSchema = Yup.object().shape({
-  machine: Yup.string()
-    .label('Machine')
-    .required(),
-  country: Yup.string()
-    .label('Country')
-    .required(),
-  languages: Yup.array()
-    .label('Languages')
-    .required()
-    .min(1)
-    .max(4),
-  cryptoCurrencies: Yup.array()
-    .label('Crypto Currencies')
-    .required()
-    .min(1)
+  machine: Yup.string().label('Machine').required(),
+  country: Yup.string().label('Country').required(),
+  languages: Yup.array().label('Languages').required().min(1).max(4),
+  cryptoCurrencies: Yup.array().label('Crypto currencies').required().min(1)
 })
 
 const localeDefaults = {

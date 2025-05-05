@@ -1,4 +1,4 @@
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { alpha } from '@material-ui/core/styles/colorManipulator'
 
 import {
   detailsRowStyles,
@@ -40,7 +40,7 @@ const machineDetailsStyles = {
     zIndex: 1,
     marginRight: 60,
     marginLeft: 'auto',
-    background: fade(comet, 0.5)
+    background: alpha(comet, 0.5)
   }
 }
 

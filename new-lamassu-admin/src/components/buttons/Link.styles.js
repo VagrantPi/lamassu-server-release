@@ -1,4 +1,4 @@
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { alpha } from '@material-ui/core/styles/colorManipulator'
 
 import typographyStyles from 'src/components/typography/styles'
 import {
@@ -11,10 +11,10 @@ import {
 const { h4 } = typographyStyles
 
 const color = color => ({
-  boxShadow: `inset 0 -4px 0 0 ${fade(color, 0.8)}`,
+  boxShadow: `inset 0 -4px 0 0 ${alpha(color, 0.8)}`,
   '&:hover': {
     boxShadow: 'none',
-    backgroundColor: fade(color, 0.8)
+    backgroundColor: alpha(color, 0.8)
   }
 })
 

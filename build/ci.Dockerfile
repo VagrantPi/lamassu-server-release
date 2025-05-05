@@ -1,3 +1,14 @@
+FROM node:22-alpine AS build-ui
+RUN apk add --no-cache npm git curl build-base python3
+
+COPY ["new-lamassu-admin/package.json", "new-lamassu-admin/package-lock.json", "./"]
+
+RUN npm version --allow-same-version --git-tag-version false --commit-hooks false 1.0.0
+RUN npm install
+
+COPY new-lamassu-admin/ ./
+RUN npm run build
+
 FROM ubuntu:20.04 as base
 
 ARG VERSION
@@ -25,9 +36,6 @@ RUN npm version --allow-same-version --git-tag-version false --commit-hooks fals
 RUN npm install --production
 
 COPY . ./
-
-RUN cd new-lamassu-admin && npm install && npm run build
-RUN mv new-lamassu-admin/build public/
-RUN rm -rf new-lamassu-admin/node_modules
+COPY --from=build-ui /build /lamassu-server/public
 
 RUN cd .. && tar -zcvf lamassu-server.tar.gz ./lamassu-server

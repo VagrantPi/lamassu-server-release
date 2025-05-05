@@ -90,7 +90,7 @@ const styles = {
     textAlign: 'center',
     '&:after': {
       display: 'block',
-      content: 'attr(forcesize)',
+      content: 'attr(data-forcesize)',
       fontWeight: 700,
       height: 0,
       overflow: 'hidden',

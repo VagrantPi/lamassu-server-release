@@ -1,8 +1,7 @@
 import * as R from 'ramda'
-import * as Yup from 'yup'
-
-import Autocomplete from 'src/components/inputs/formik/Autocomplete.js'
+import Autocomplete from 'src/components/inputs/formik/Autocomplete'
 import { getView } from 'src/pages/Triggers/helper'
+import * as Yup from 'yup'
 
 const buildAdvancedRequirementOptions = customInfoRequests => {
   const base = [
@@ -31,9 +30,7 @@ const displayRequirement = (code, customInfoRequests) => {
 }
 
 const defaultSchema = Yup.object().shape({
-  expirationTime: Yup.string()
-    .label('Expiration time')
-    .required(),
+  expirationTime: Yup.string().label('Expiration time').required(),
   automation: Yup.string()
     .label('Automation')
     .matches(/(Manual|Automatic)/)
@@ -61,9 +58,7 @@ const getOverridesSchema = (values, customInfoRequests) => {
           return true
         }
       }),
-    expirationTime: Yup.string()
-      .label('Expiration time')
-      .required(),
+    expirationTime: Yup.string().label('Expiration time').required(),
     automation: Yup.string()
       .label('Automation')
       .matches(/(Manual|Automatic)/)

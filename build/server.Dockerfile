@@ -25,8 +25,8 @@ EXPOSE 3000
 ENTRYPOINT [ "/lamassu-server/bin/lamassu-server-entrypoint.sh" ]
 
 
-FROM alpine:3.14 AS build-ui
-RUN apk add --no-cache nodejs npm git curl build-base python3
+FROM node:22-alpine AS build-ui
+RUN apk add --no-cache npm git curl build-base python3
 
 COPY ["new-lamassu-admin/package.json", "new-lamassu-admin/package-lock.json", "./"]
 
