@@ -1,7 +1,6 @@
-import * as Yup from 'yup'
-
 import SecretInputFormik from 'src/components/inputs/formik/SecretInput'
 import TextInputFormik from 'src/components/inputs/formik/TextInput'
+import * as Yup from 'yup'
 
 import { secretTest } from './helper'
 
@@ -17,18 +16,18 @@ export default {
     },
     {
       code: 'authToken',
-      display: 'Auth Token',
+      display: 'Auth token',
       component: SecretInputFormik
     },
     {
       code: 'fromNumber',
-      display: 'Twilio Number (international format)',
+      display: 'Twilio number (international format)',
       component: TextInputFormik,
       face: true
     },
     {
       code: 'toNumber',
-      display: 'Notifications Number (international format)',
+      display: 'Notifications number (international format)',
       component: TextInputFormik,
       face: true
     }

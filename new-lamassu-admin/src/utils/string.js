@@ -1,7 +1,5 @@
 import * as R from 'ramda'
 
-import S from './sanctuary'
-
 const formatLong = value => {
   if (!value || value.length <= 20) return value
 
@@ -11,22 +9,28 @@ const formatLong = value => {
   )}`
 }
 
-const toFirstLower = S.compose(S.joinWith(''))(R.adjust(0, S.toLower))
-const toFirstUpper = S.compose(S.joinWith(''))(R.adjust(0, S.toUpper))
-const onlyFirstToUpper = S.compose(toFirstUpper)(S.toLower)
+const toFirstLower = R.compose(R.join(''), R.adjust(0, R.toLower))
+
+const toFirstUpper = R.compose(R.join(''), R.adjust(0, R.toUpper))
+
+const onlyFirstToUpper = R.compose(toFirstUpper, R.toLower)
 
 const splitOnUpper = R.compose(
-  S.splitOn(' '),
+  R.split(' '),
   R.replace(/([A-Z])/g, ' $1'),
   toFirstLower
 )
-const startCase = R.compose(
-  S.joinWith(' '),
-  S.map(onlyFirstToUpper),
-  splitOnUpper
-)
+const startCase = R.compose(R.join(' '), R.map(onlyFirstToUpper), splitOnUpper)
+
+const sentenceCase = R.compose(onlyFirstToUpper, R.join(' '), splitOnUpper)
 
 const singularOrPlural = (amount, singularStr, pluralStr) =>
   parseInt(amount) === 1 ? singularStr : pluralStr
 
-export { startCase, onlyFirstToUpper, formatLong, singularOrPlural }
+export {
+  startCase,
+  onlyFirstToUpper,
+  formatLong,
+  singularOrPlural,
+  sentenceCase
+}

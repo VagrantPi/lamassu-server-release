@@ -36,9 +36,6 @@ setEnvVariable('OPERATOR_DATA_DIR', `/opt/lamassu-server/operatordata`)
 
 setEnvVariable('COIN_ATM_RADAR_URL', `https://coinatmradar.info/api/lamassu/`)
 
-setEnvVariable('OFAC_SOURCES_NAMES', 'sdn_advanced,cons_advanced')
-setEnvVariable('OFAC_SOURCES_URLS', 'https://www.treasury.gov/ofac/downloads/sanctions/1.0/sdn_advanced.xml,https://www.treasury.gov/ofac/downloads/sanctions/1.0/cons_advanced.xml')
-
 setEnvVariable('BTC_NODE_LOCATION', 'local')
 setEnvVariable('BTC_WALLET_LOCATION', 'local')
 setEnvVariable('BCH_NODE_LOCATION', 'local')

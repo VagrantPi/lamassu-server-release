@@ -16,10 +16,10 @@ const formatName = idCardData => {
     firstName && lastName
       ? `${R.o(R.toUpper, R.head)(firstName)}. ${lastName}`
       : R.isNil(firstName)
-      ? lastName
-      : R.isNil(lastName)
-      ? firstName
-      : null
+        ? lastName
+        : R.isNil(lastName)
+          ? firstName
+          : null
   return idCardData ? innerFormatName(idCardData) : null
 }
 

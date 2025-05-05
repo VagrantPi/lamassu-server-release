@@ -27,8 +27,6 @@ services:
       - FRONT_CAMERA_DIR=/lamassu-data/frontcamera
       - OPERATOR_DATA_DIR=/lamassu-data/operatordata
       - COIN_ATM_RADAR_URL=https://coinatmradar.info/api/lamassu/
-      - OFAC_SOURCES_NAMES=sdn_advanced,cons_advanced
-      - OFAC_SOURCES_URLS=https://www.treasury.gov/ofac/downloads/sanctions/1.0/sdn_advanced.xml,https://www.treasury.gov/ofac/downloads/sanctions/1.0/cons_advanced.xml
       - HOSTNAME=localhost
       - LOG_LEVEL=info
 
@@ -58,8 +56,6 @@ services:
       - FRONT_CAMERA_DIR=/lamassu-data/frontcamera
       - OPERATOR_DATA_DIR=/lamassu-data/operatordata
       - COIN_ATM_RADAR_URL=https://coinatmradar.info/api/lamassu/
-      - OFAC_SOURCES_NAMES=sdn_advanced,cons_advanced
-      - OFAC_SOURCES_URLS=https://www.treasury.gov/ofac/downloads/sanctions/1.0/sdn_advanced.xml,https://www.treasury.gov/ofac/downloads/sanctions/1.0/cons_advanced.xml
       - HOSTNAME=172.29.0.3
       - LOG_LEVEL=info
     depends_on:

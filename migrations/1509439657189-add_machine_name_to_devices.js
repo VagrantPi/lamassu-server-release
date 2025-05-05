@@ -1,25 +1,15 @@
 const db = require('./db')
-const migrateTools = require('./migrate-tools')
 
+// This migration was updated on v10.2
+// it's from before 7.5 and we update one major version at a time
+// Data migration was removed, keeping only the schema update
 exports.up = function (next) {
-  return migrateTools.migrateNames()
-    .then(updateSql => {
-      const sql = [
-        'alter table devices add column name text',
-        updateSql,
-        'alter table devices alter column name set not null'
-      ]
+  const sql = [
+    'alter table devices add column name text',
+    'alter table devices alter column name set not null'
+  ]
 
-      return db.multi(sql, next)
-    })
-    .catch(() => {
-      const sql = [
-        'alter table devices add column name text',
-        'alter table devices alter column name set not null'
-      ]
-
-      return db.multi(sql, next)
-    })
+  return db.multi(sql, next)
 }
 
 exports.down = function (next) {

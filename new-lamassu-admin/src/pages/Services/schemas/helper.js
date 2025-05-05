@@ -1,4 +1,12 @@
+import { ALL_CRYPTOS } from '@lamassu/coins/config/consts'
+import { getEquivalentCode } from '@lamassu/coins/lightUtils'
 import * as R from 'ramda'
+
+const WARNING_LEVELS = {
+  CLEAN: 'clean',
+  PARTIAL: 'partial',
+  IMPORTANT: 'important'
+}
 
 const secretTest = (secret, message) => ({
   name: 'secret-test',
@@ -21,4 +29,36 @@ const leadingZerosTest = (value, context) => {
   return true
 }
 
-export { secretTest, leadingZerosTest }
+const buildCurrencyOptions = markets => {
+  const prunedCoins = R.compose(R.uniq, R.map(getEquivalentCode))(ALL_CRYPTOS)
+  return R.map(it => {
+    const unavailableCryptos = R.difference(prunedCoins, markets[it])
+    const unavailableCryptosFiltered = R.difference(unavailableCryptos, [it]) // As the markets can have stablecoins to trade against other crypto, filter them out, as there can't be pairs such as USDT/USDT
+
+    const unavailableMarketsStr =
+      R.length(unavailableCryptosFiltered) > 1
+        ? `${R.join(
+            ', ',
+            R.slice(0, -1, unavailableCryptosFiltered)
+          )} and ${R.last(unavailableCryptosFiltered)}`
+        : unavailableCryptosFiltered[0]
+
+    const warningLevel = R.isEmpty(unavailableCryptosFiltered)
+      ? WARNING_LEVELS.CLEAN
+      : !R.isEmpty(unavailableCryptosFiltered) &&
+          R.length(unavailableCryptosFiltered) < R.length(prunedCoins)
+        ? WARNING_LEVELS.PARTIAL
+        : WARNING_LEVELS.IMPORTANT
+
+    return {
+      code: R.toUpper(it),
+      display: R.toUpper(it),
+      warning: warningLevel,
+      warningMessage: !R.isEmpty(unavailableCryptosFiltered)
+        ? `No market pairs available for ${unavailableMarketsStr}`
+        : `All market pairs are available`
+    }
+  }, R.keys(markets))
+}
+
+export { secretTest, leadingZerosTest, buildCurrencyOptions }

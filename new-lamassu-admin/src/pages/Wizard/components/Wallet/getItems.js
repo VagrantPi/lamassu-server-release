@@ -1,11 +1,13 @@
 import * as R from 'ramda'
 
-import schema from 'src/pages/Services/schemas'
+import _schema from 'src/pages/Services/schemas'
+
 const contains = crypto => R.compose(R.contains(crypto), R.prop('cryptos'))
 const sameClass = type => R.propEq('class', type)
 const filterConfig = (crypto, type) =>
   R.filter(it => sameClass(type)(it) && contains(crypto)(it))
 export const getItems = (accountsConfig, accounts, type, crypto) => {
+  const schema = _schema()
   const fConfig = filterConfig(crypto, type)(accountsConfig)
   const find = code => accounts && accounts[code]
 
